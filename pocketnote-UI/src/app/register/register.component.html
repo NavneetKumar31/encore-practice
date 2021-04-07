@@ -1,0 +1,59 @@
+<div class="register-container">
+  <div class="form-container">
+    <form [formGroup]="registerForm" (ngSubmit)="registerUser()">
+      <p class="title">Register User</p>
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input type="text" matInput formControlName="name" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput formControlName="email" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Mobile</mat-label>
+        <input type="number" matInput formControlName="mobile" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Gender</mat-label>
+        <mat-select formControlName="gender">
+          <mat-option>--</mat-option>
+          <mat-option
+            *ngFor="let gender of ['male', 'female', 'other']"
+            [value]="gender"
+          >
+            {{ gender | titlecase }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput formControlName="password" required />
+      </mat-form-field>
+
+      <button
+        type="button"
+        mat-raised-button
+        class="btn"
+        (click)="routeTo('login')"
+      >
+        Login
+      </button>
+      <button
+        type="button"
+        mat-raised-button
+        class="btn"
+        (click)="registerForm.reset()"
+      >
+        Reset
+      </button>
+      <button type="submit" mat-raised-button class="btn primary-btn">
+        Register
+      </button>
+    </form>
+  </div>
+</div>

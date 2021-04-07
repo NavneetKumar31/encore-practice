@@ -1,0 +1,102 @@
+<div class="posts-container">
+  <div class="page-info">
+    <p class="title">{{ pageTitle | titlecase }}</p>
+    <p class="description">Here you can see, like, share and save feeds.</p>
+    <div class="btn-grp actions">
+      <button
+        mat-raised-button
+        class="btn primary-btn"
+        (click)="routeTo('post-form', 'new')"
+      >
+        Post a Feed
+      </button>
+      <ng-container *ngIf="pageTitle === 'your feeds'; else worldFeedsTemplate">
+        <button
+          mat-raised-button
+          class="btn primary-btn"
+          (click)="routeTo('posts', null)"
+        >
+          World's Feeds
+        </button>
+      </ng-container>
+      <ng-template #worldFeedsTemplate>
+        <button
+          mat-raised-button
+          class="btn primary-btn"
+          (click)="routeTo('my-posts', null)"
+        >
+          Your Feeds
+        </button>
+      </ng-template>
+    </div>
+  </div>
+
+  <div class="row">
+    <ng-container *ngFor="let post of posts; let i = index">
+      <div class="col-4 my-col">
+        <div class="post-card">
+          <div class="header">
+            <p class="avatar">NK</p>
+            <section class="post-info">
+              <p class="title">{{ post?.title | titlecase }}</p>
+              <p class="author">{{ post?.author | titlecase }}</p>
+            </section>
+            <section class="right-panel">
+              <p class="created-on">22/03/2021</p>
+              <ng-template [ngIf]="post.author === user.name">
+                <button mat-icon-button [matMenuTriggerFor]="postMenu">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #postMenu="matMenu">
+                  <button
+                    mat-menu-item
+                    (click)="routeTo('post-form', post._id)"
+                  >
+                    <mat-icon>edit</mat-icon>
+                    <span>Edit</span>
+                  </button>
+                  <button mat-menu-item (click)="deletePost(post)">
+                    <mat-icon>delete</mat-icon>
+                    <span>Delete</span>
+                  </button>
+                </mat-menu>
+              </ng-template>
+            </section>
+          </div>
+          <div class="content">
+            <figure>
+              <img
+                class="post-img"
+                src="../../assets/imgs/post-img.png"
+                alt="post image"
+              />
+              <figcaption>{{ post?.description }}</figcaption>
+            </figure>
+          </div>
+          <div class="actions">
+            <div class="row">
+              <div class="col my-col">
+                <button mat-button>
+                  <mat-icon>favorite</mat-icon>
+                  Like
+                </button>
+              </div>
+              <div class="col my-col">
+                <button mat-button>
+                  <mat-icon>share</mat-icon>
+                  Share
+                </button>
+              </div>
+              <div class="col my-col">
+                <button mat-button>
+                  <mat-icon>save</mat-icon>
+                  Save
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="login-container">
+  <div class="form-container">
+    <form [formGroup]="loginForm" (ngSubmit)="authenticateUser()">
+      <p class="title">Login User</p>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput formControlName="email" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput formControlName="password" required />
+      </mat-form-field>
+
+      <button
+        type="button"
+        mat-raised-button
+        class="btn"
+        (click)="routeTo('register')"
+      >
+        Register
+      </button>
+      <button type="reset" mat-raised-button class="btn">Reset</button>
+      <button type="submit" mat-raised-button class="btn primary-btn">
+        Login
+      </button>
+    </form>
+  </div>
+</div>

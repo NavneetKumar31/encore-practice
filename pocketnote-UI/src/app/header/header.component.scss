@@ -1,0 +1,56 @@
+@import "../../assets/ext_css/variables.scss";
+
+.header-container {
+  background: $primary-bg;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  //   backdrop-filter: blur(7px);
+  //   -webkit-backdrop-filter: blur(7px);
+  //   //   border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  .header-toolbar {
+    background: transparent;
+    color: $white !important;
+
+    .home-btn {
+      margin-right: 10px;
+
+      mat-icon {
+        font-size: 38px;
+        height: 38px;
+        width: 38px;
+        line-height: 30px;
+        vertical-align: middle;
+      }
+    }
+
+    .brand-name {
+      font-size: 1.5rem;
+    }
+
+    .header-spacer {
+      flex: 1 1 auto;
+    }
+
+    .nav-list {
+      list-style: none;
+
+      .nav-list-item {
+        cursor: pointer;
+        display: inline-block;
+        margin: 0 10px;
+        padding: 0 5px;
+
+        .nav-list-link {
+          font-size: 14px;
+          color: $white;
+          text-decoration: none;
+
+          &:hover {
+            color: $third-white;
+          }
+        }
+      }
+    }
+  }
+}

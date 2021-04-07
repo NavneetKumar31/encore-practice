@@ -1,0 +1,35 @@
+<div class="home-container">
+  <div class="banner-container">
+    <div class="row">
+      <div class="col-4 my-col">
+        <p class="title">Welcome to POCKET NOTES</p>
+        <p class="description">
+          Here you can connect with world by see their feeds and post your
+          feeds.
+        </p>
+        <ul class="feature-list">
+          <li class="feature-list-item">You can see feeds of others.</li>
+          <li class="feature-list-item">You can react on others feeds.</li>
+          <li class="feature-list-item">You can share others feeds.</li>
+          <li class="feature-list-item">You can save others feeds.</li>
+          <li class="feature-list-item">You can post your feeds.</li>
+        </ul>
+      </div>
+      <div class="col my-col">
+        <figure>
+          <img src="../../assets/imgs/banner.jpeg" alt="connecting world" />
+        </figure>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center content">
+    <button
+      class="start-btn btn primary-btn"
+      mat-raised-button
+      (click)="routeTo('posts')"
+    >
+      Let's Start
+    </button>
+  </div>
+</div>

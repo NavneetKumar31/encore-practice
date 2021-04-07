@@ -1,0 +1,38 @@
+<div class="post-form-container">
+  <div class="page-info">
+    <p class="title">Post Form</p>
+  </div>
+
+  <div class="form-container">
+    <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline">
+        <mat-label>Title</mat-label>
+        <input type="text" matInput formControlName="title" required />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description" required></textarea>
+      </mat-form-field>
+
+      <button
+        type="button"
+        mat-raised-button
+        class="btn"
+        (click)="routeTo('posts')"
+      >
+        Back To Feeds
+      </button>
+      <button
+        type="reset"
+        mat-raised-button
+        class="btn"
+        (click)="postForm.reset()"
+      >
+        Reset
+      </button>
+      <button type="submit" mat-raised-button class="btn primary-btn">
+        Save
+      </button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./assets/ext_css/variables.scss";
+@import "./assets/ext_css/common.scss";
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-image: linear-gradient(
+    180deg,
+    #2f6ed3 5%,
+    #5095e4 20%,
+    #5095e4 60%,
+    #2f6ed3 95%
+  );
+}

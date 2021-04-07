@@ -1,0 +1,54 @@
+@import "../../assets/ext_css/variables.scss";
+
+.home-container {
+  .banner-container {
+    position: relative;
+    background: rgba(178, 121, 121, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(8.5px);
+    -webkit-backdrop-filter: blur(8.5px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    padding: 20px;
+    margin: 50px 0;
+
+    p {
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    .title {
+      font-size: 1.7rem;
+      color: $white;
+      margin-bottom: 10px !important;
+    }
+
+    .description {
+      font-size: 1rem;
+      color: $second-white;
+    }
+
+    .feature-list {
+      margin-top: 20px;
+
+      .feature-list-item {
+        font-size: 0.9rem;
+        color: $second-white;
+      }
+    }
+
+    figure {
+      margin-left: 20px;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  .start-btn {
+    font-size: 2rem;
+    padding: 20px 50px;
+  }
+}

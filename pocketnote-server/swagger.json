@@ -1,0 +1,128 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Pocket Notes",
+    "description": "My Pocket notes Project Application API",
+    "license": {
+      "name": "Navneet Kumar",
+      "url": ""
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Users",
+      "description": "API for users from DB"
+    }
+  ],
+  "schemes": ["http", "https"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/users": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "Get all users from DB",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Users"
+            }
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "parameters": [
+        {
+          "name": "_id",
+          "in": "path",
+          "required": true,
+          "description": "ID of user that we want to find",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": ["User"],
+        "summary": "Get user with requested ID from DB",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "required": ["mobile", "email"],
+      "properties": {
+        "_id": {
+          "type": "mongoID",
+          "uniqueItems": true
+        },
+        "name": {
+          "type": "string"
+        },
+        "mobile": {
+          "type": "number",
+          "uniqueItems": true
+        },
+        "email": {
+          "type": "number",
+          "uniqueItems": true
+        },
+        "password": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "gender": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "registeredOn": {
+          "type": "date",
+          "uniqueItems": false
+        }
+      }
+    },
+    "Users": {
+      "type": "array",
+      "$ref": "#/definitions/User"
+    },
+    "Note": {
+      "required": ["mobile", "email"],
+      "properties": {
+        "_id": {
+          "type": "mongoID",
+          "uniqueItems": true
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "createdOn": {
+          "type": "date"
+        },
+        "modifiedOn": {
+          "type": "date"
+        },
+        "createdBy": {
+          "type": "string"
+        }
+      }
+    },
+    "Notes": {
+      "type": "array",
+      "$ref": "#/definitions/Note"
+    }
+  }
+}
