@@ -1,42 +1,44 @@
 <div class="header-container">
   <mat-toolbar class="header-toolbar">
+    <!-- category button -->
     <button
-      mat-icon-button
-      class="home-btn"
-      aria-label="home button with home icon"
+      class="btn category-btn"
+      mat-stroked-button
+      [matMenuTriggerFor]="categoryMenu"
     >
-      <mat-icon>home</mat-icon>
+      <mat-icon>menu</mat-icon>
     </button>
+    <mat-menu #categoryMenu="matMenu">
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>Item 2</button>
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>Item 2</button>
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>Item 2</button>
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>Item 2</button>
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>Item 2</button>
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>Item 2</button>
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>Item 2</button>
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>Item 2</button>
+    </mat-menu>
 
-    <span class="brand-name">{{ "Pocket Notes" | uppercase }}</span>
-
-    <!-- <span class="header-spacer"></span>
-
-    <ul class="nav-list">
-      <li class="nav-list-item">
-        <a
-          class="nav-list-link"
-          [routerLink]="['/home']"
-          routerLinkActive="active-nav-link"
-          >World Feeds</a
-        >
-      </li>
-      <li class="nav-list-item">
-        <a
-          class="nav-list-link"
-          [routerLink]="['/posts']"
-          routerLinkActive="active-nav-link"
-          >My Feeds</a
-        >
-      </li>
-    </ul> -->
+    <!-- brand logo -->
+    <div class="logo-wrapper">
+      <img [src]="brandInfo?.logo" alt="master store logo" class="brand-log" />
+    </div>
 
     <span class="header-spacer"></span>
 
+    <!-- login or user button -->
     <ng-container *ngIf="isUserLoggedIn; else guestTemplate">
       <button
-        mat-raised-button
-        class="btn primary-btn"
+        mat-stroked-button
+        class="btn white-stroked-btn"
         [matMenuTriggerFor]="userMenu"
       >
         {{ user?.name | titlecase }}
@@ -58,9 +60,8 @@
     </ng-container>
     <ng-template #guestTemplate>
       <button
-        mat-raised-button
-        mat-raised-button
-        class="btn primary-btn"
+        mat-stroked-button
+        class="btn white-stroked-btn"
         (click)="routeTo('login')"
       >
         Login

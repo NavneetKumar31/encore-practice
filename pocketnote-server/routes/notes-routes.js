@@ -3,7 +3,7 @@ var noteRouter = express.Router();
 const noteController = require('../controllers/note-controller');
 
 // will return all notes from db
-noteRouter.get('/', noteController.all);
+noteRouter.get('/', noteController.getAll);
 
 // will return note with requested ID from db
 noteRouter.get('/:id', noteController.getById);
@@ -15,7 +15,7 @@ noteRouter.get('/byAuthor/:author', noteController.getByAuthor);
 noteRouter.post('/', noteController.create);
 
 // will update an note in db
-noteRouter.patch('/:id', noteController.updateById);
+noteRouter.patch('/:id', noteController.update);
 
 // will delete note with request ID from db
 noteRouter.delete('/:id', noteController.deleteById);

@@ -1,0 +1,54 @@
+<div class="admin-categories-container admin-page">
+  <section class="page-header">
+    <p class="title">{{ pageInfo?.title | titlecase }}</p>
+    <p class="subtitle">{{ pageInfo?.subtitle }}</p>
+
+    <div class="actions-panel">
+      <button
+        class="btn"
+        mat-stroked-button
+        (click)="routeTo('admin-categories')"
+      >
+        <mat-icon> arrow_back </mat-icon>
+        Back to Categories
+      </button>
+    </div>
+  </section>
+
+  <section class="page-content">
+    <div class="my-store-form-container">
+      <form
+        class="my-store-form"
+        [formGroup]="categoryForm"
+        (ngSubmit)="onSubmit()"
+      >
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input type="text" matInput formControlName="name" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Type</mat-label>
+          <input type="text" matInput formControlName="type" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Description</mat-label>
+          <input type="text" matInput formControlName="description" />
+        </mat-form-field>
+
+        <div class="btn-grp">
+          <button type="submit" mat-raised-button color="primary">Save</button>
+          <button
+            type="reset"
+            mat-raised-button
+            color="accent"
+            (click)="categoryForm.reset()"
+          >
+            Reset
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+</div>

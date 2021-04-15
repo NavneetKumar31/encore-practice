@@ -1,0 +1,10 @@
+@import "../../../assets/ext_css/variables.scss";
+
+.admin-home-container {
+  height: 100%;
+
+  .sidenav-wrapper {
+    background: $black-bg;
+    height: 100vh;
+  }
+}

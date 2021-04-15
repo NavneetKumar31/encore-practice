@@ -3,14 +3,14 @@
 .home-container {
   .banner-container {
     position: relative;
-    background: rgba(178, 121, 121, 0.3);
+    background: $white-bg;
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(8.5px);
     -webkit-backdrop-filter: blur(8.5px);
     border: 1px solid rgba(255, 255, 255, 0.18);
 
     padding: 20px;
-    margin: 50px 0;
+    padding-bottom: 2px;
 
     p {
       margin: 0 !important;
@@ -19,30 +19,28 @@
 
     .title {
       font-size: 1.7rem;
-      color: $white;
       margin-bottom: 10px !important;
     }
 
     .description {
       font-size: 1rem;
-      color: $second-white;
     }
 
     .feature-list {
       margin-top: 20px;
 
       .feature-list-item {
-        font-size: 0.9rem;
-        color: $second-white;
+        font-size: 1rem;
       }
     }
 
     figure {
       margin-left: 20px;
+      text-align: center;
 
       img {
-        width: 100%;
-        height: 100%;
+        width: 700px;
+        height: 320px;
       }
     }
   }

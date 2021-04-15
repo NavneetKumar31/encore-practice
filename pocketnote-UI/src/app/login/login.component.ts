@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { SharedService } from '../shared/services/shared.service';
-import { UserService } from '../shared/services/user.service';
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { SharedService } from "../shared/services/shared.service";
+import { UserService } from "../shared/services/user.service";
+import { UtilitiesService } from "../shared/services/utilities.service";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  selector: "app-login",
+  templateUrl: "./login.component.html",
+  styleUrls: ["./login.component.scss"],
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
@@ -23,8 +24,8 @@ export class LoginComponent implements OnInit {
 
   initializeForm(): void {
     this.loginForm = this.$fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]],
+      email: ["", [Validators.required, Validators.email]],
+      password: ["", [Validators.required, Validators.minLength(8)]],
     });
   }
 
@@ -41,10 +42,10 @@ export class LoginComponent implements OnInit {
     this.$user.authenticateUser(user).subscribe((data) => {
       if (data.success) {
         console.log(data);
-        localStorage.setItem('user', JSON.stringify(data.results));
-        localStorage.setItem('token', JSON.stringify(data.token));
+        localStorage.setItem("user", JSON.stringify(data.results));
+        localStorage.setItem("token", JSON.stringify(data.token));
         this.$user.isUserLoggedIn.next(true);
-        this.$shared.routeTo('home');
+        this.$shared.routeTo("home");
       }
     });
   }

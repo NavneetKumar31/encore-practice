@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { SharedService } from '../shared/services/shared.service';
-import { UserService } from '../shared/services/user.service';
+import { Component, OnInit } from "@angular/core";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { SharedService } from "../shared/services/shared.service";
+import { UserService } from "../shared/services/user.service";
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss'],
+  selector: "app-register",
+  templateUrl: "./register.component.html",
+  styleUrls: ["./register.component.scss"],
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
@@ -23,11 +23,11 @@ export class RegisterComponent implements OnInit {
 
   initializeForm(): void {
     this.registerForm = this.$fb.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      mobile: ['', Validators.required],
-      gender: [''],
-      password: ['', Validators.required],
+      name: ["", Validators.required],
+      email: ["", [Validators.required, Validators.email]],
+      mobile: ["", [Validators.required]],
+      gender: [""],
+      password: ["", [Validators.required, Validators.minLength(8)]],
     });
   }
 
@@ -49,7 +49,7 @@ export class RegisterComponent implements OnInit {
     this.$user.registerUser(newUser).subscribe((data) => {
       if (data.success) {
         this.registerForm.reset();
-        this.$shared.routeTo('login');
+        this.$shared.routeTo("login");
       }
     });
   }

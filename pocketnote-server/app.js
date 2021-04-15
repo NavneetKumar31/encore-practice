@@ -7,6 +7,9 @@ var mongoose = require('mongoose');
 const dataBaseConfig = require('./configurations/database');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
+const AppError = require('./helpers/error-handler');
+const globalErrorHandler = require('./controllers/error-controller');
+
 var app = express();
 
 mongoose.connect(dataBaseConfig.database);
@@ -47,28 +50,41 @@ app.use(morgan("dev"));
 app.use(bodyParser.json());
 
 //routes for api
-const users = require('./routes/users-routes');
-const notes = require('./routes/notes-routes');
+const usersRouter = require('./routes/users-routes');
+const notesRouter = require('./routes/notes-routes');
+const storiesRouter = require('./routes/stories-routes');
+const productsRouter = require('./routes/products-routes');
+const categoriesRouter = require('./routes/categories-routes');
+const subcategoriesRouter = require('./routes/subcategories-routes');
+const cartsRouter = require('./routes/cart-routes');
+const ordersRouter = require('./routes/orders-routes');
+const addressesRouter = require('./routes/addresses-routes');
 
-app.use('/users', users);
-app.use('/notes', notes);
-
-// for all unhandled routes
-app.all('*', (req, res, next) => {
-    res.status(404).json({
-        success: false,
-        message: `Can't find ${req.originalUrl} on this server!`,
-    });
-});
+app.use('/users', usersRouter);
+app.use('/notes', notesRouter);
+app.use('/stories', storiesRouter);
+app.use('/products', productsRouter);
+app.use('/categories', categoriesRouter);
+app.use('/subcategories', subcategoriesRouter);
+app.use('/carts', cartsRouter);
+app.use('/orders', ordersRouter);
+app.use('/addresses', addressesRouter);
 
 // Index Route
 app.get('/', (req, res) => {
-    // res.send('<h3>Hi! you have reached to the end point of IIFT Server</h3>');
     res.sendFile(path.join(__dirname + '/index.html'));
 });
 
 // for swagger ui
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+// for all unhandled routes
+app.all('*', (req, res, next) => {
+    next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
+});
+
+// global error handler
+app.use(globalErrorHandler);
 
 // Start Server
 app.listen(port, () => {

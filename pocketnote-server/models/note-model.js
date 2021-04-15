@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 // User Schema
-var NoteSchema = mongoose.Schema({
+var NoteSchema = new mongoose.Schema({
     title: {
         type: String
     },

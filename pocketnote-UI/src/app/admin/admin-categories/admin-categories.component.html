@@ -1,0 +1,91 @@
+<div class="admin-categories-container admin-page">
+  <section class="page-header">
+    <p class="title">Categories</p>
+    <p class="subtitle">
+      Here you can manage (view, add, edit, delete) categories for products.
+    </p>
+
+    <div class="actions-panel">
+      <button
+        class="btn"
+        mat-stroked-button
+        (click)="routeTo('admin-category-form', 'new')"
+      >
+        <mat-icon> add </mat-icon>
+        Add Category
+      </button>
+      <button class="btn" mat-stroked-button>
+        <mat-icon> delete_forever </mat-icon>
+        Delete All
+      </button>
+    </div>
+  </section>
+
+  <section class="page-content">
+    <div class="table-responsive my-store-table-container">
+      <table class="table table-hover my-store-table">
+        <thead>
+          <ng-container
+            *ngFor="
+              let columnName of [
+                '#',
+                'name',
+                'type',
+                'description',
+                'created on',
+                'last modified on',
+                'created by',
+                'actions'
+              ];
+              let i = index
+            "
+          >
+            <th>{{ columnName }}</th>
+          </ng-container>
+        </thead>
+
+        <tbody>
+          <ng-container *ngFor="let category of categories; let i = index">
+            <tr>
+              <td>
+                <p class="center">{{ i + 1 }}</p>
+              </td>
+              <td>
+                <p class="center">{{ category?.name }}</p>
+              </td>
+              <td>
+                <p class="center">{{ category?.type }}</p>
+              </td>
+              <td>
+                <p class="center">{{ category?.description }}</p>
+              </td>
+              <td>
+                <p class="center">
+                  {{ category?.createdOn | date: "MMM dd, yyyy hh:mm" }}
+                </p>
+              </td>
+              <td>
+                <p class="center">
+                  {{ category?.modifiedOn | date: "MMM dd, yyyy hh:mm" }}
+                </p>
+              </td>
+              <td>
+                <p class="center">{{ category?.createdBy }}</p>
+              </td>
+              <td>
+                <section class="btn-grp">
+                  <button class="btn" mat-icon-button>
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                  <button class="btn" mat-icon-button>
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </section>
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>

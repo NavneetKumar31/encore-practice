@@ -1,30 +1,97 @@
 <div class="login-container">
-  <div class="form-container">
-    <form [formGroup]="loginForm" (ngSubmit)="authenticateUser()">
-      <p class="title">Login User</p>
+  <div class="login-card">
+    <div class="row">
+      <!-- image section -->
+      <div class="col my-col">
+        <section class="img-wrapper">
+          <img src="../../assets/imgs/login-img.jpeg" alt="login image" />
+        </section>
+      </div>
 
-      <mat-form-field appearance="outline">
-        <mat-label>Email</mat-label>
-        <input type="email" matInput formControlName="email" required />
-      </mat-form-field>
+      <!-- form section -->
+      <div class="col my-col">
+        <div class="form-wrapper">
+          <form [formGroup]="loginForm" (ngSubmit)="authenticateUser()">
+            <div class="header">
+              <p class="title">Login Here</p>
+              <p class="subtitle">
+                Please enter your credentials to login into app...
+              </p>
+            </div>
 
-      <mat-form-field appearance="outline">
-        <mat-label>Password</mat-label>
-        <input type="password" matInput formControlName="password" required />
-      </mat-form-field>
+            <div class="content">
+              <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput formControlName="email" required />
+                <mat-error
+                  *ngIf="
+                    loginForm.controls.email.hasError('email') &&
+                    !loginForm.hasError('required')
+                  "
+                >
+                  Please enter a valid email address
+                </mat-error>
+                <mat-error
+                  *ngIf="loginForm.controls.email.hasError('required')"
+                >
+                  Email is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
 
-      <button
-        type="button"
-        mat-raised-button
-        class="btn"
-        (click)="routeTo('register')"
-      >
-        Register
-      </button>
-      <button type="reset" mat-raised-button class="btn">Reset</button>
-      <button type="submit" mat-raised-button class="btn primary-btn">
-        Login
-      </button>
-    </form>
+              <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input
+                  type="password"
+                  matInput
+                  formControlName="password"
+                  required
+                />
+                <mat-error
+                  *ngIf="loginForm.controls.password.hasError('required')"
+                >
+                  Password is <strong>required</strong>
+                </mat-error>
+                <mat-error
+                  *ngIf="loginForm.controls.password.hasError('minlength')"
+                >
+                  Password's minimum length is <strong>8 characters</strong>
+                </mat-error>
+              </mat-form-field>
+
+              <a
+                [routerLink]="['/routePath']"
+                routerLinkActive="router-link-active"
+                class="forget-link"
+              >
+                forget password?
+              </a>
+            </div>
+
+            <div class="footer">
+              <button
+                type="submit"
+                mat-raised-button
+                class="btn login-btn"
+                color="primary"
+                [disabled]="loginForm.invalid"
+              >
+                Login
+              </button>
+              <button type="reset" mat-raised-button class="btn" color="accent">
+                Reset
+              </button>
+              <button
+                type="button"
+                mat-raised-button
+                class="btn"
+                (click)="routeTo('register')"
+              >
+                Register
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

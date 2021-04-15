@@ -1,0 +1,84 @@
+@import "../../../assets/ext_css/variables.scss";
+
+.admin-categories-container {
+  .my-store-table-container {
+    border-radius: 5px;
+    background: $white-bg;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(8.5px);
+    -webkit-backdrop-filter: blur(8.5px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    .my-store-table {
+      margin: 0 !important;
+      padding: 0 !important;
+
+      thead {
+        th {
+          font-size: 13px;
+          font-weight: 500;
+          letter-spacing: 0.8px;
+          text-align: center;
+          text-transform: capitalize;
+          padding: 7px 0;
+          border-bottom: 1px solid #eee;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        td {
+          vertical-align: middle;
+          padding: 5px;
+
+          p {
+            font-size: 16px;
+            padding: 0 !important;
+            margin: 0 !important;
+          }
+
+          .lg {
+            max-width: 400px;
+            min-width: fit-content;
+          }
+
+          .lg {
+            max-width: 300px;
+            min-width: fit-content;
+          }
+
+          .sm {
+            max-width: 200px;
+            min-width: fit-content;
+          }
+
+          .center {
+            text-align: center !important;
+          }
+
+          .btn-grp {
+            text-align: center;
+            margin: 0 2px;
+            vertical-align: middle;
+
+            button {
+              mat-icon {
+                font-size: 18px;
+                height: 18px;
+                width: 18px;
+                line-height: 18px;
+              }
+
+              &:hover {
+                border: 1px solid $third-white;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

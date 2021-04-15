@@ -1,59 +1,136 @@
 <div class="register-container">
-  <div class="form-container">
-    <form [formGroup]="registerForm" (ngSubmit)="registerUser()">
-      <p class="title">Register User</p>
-      <mat-form-field appearance="outline">
-        <mat-label>Name</mat-label>
-        <input type="text" matInput formControlName="name" required />
-      </mat-form-field>
+  <div class="register-card">
+    <div class="row">
+      <!-- image section -->
+      <div class="col my-col">
+        <section class="img-wrapper">
+          <img src="../../assets/imgs/login-img.jpeg" alt="login image" />
+        </section>
+      </div>
 
-      <mat-form-field appearance="outline">
-        <mat-label>Email</mat-label>
-        <input type="email" matInput formControlName="email" required />
-      </mat-form-field>
+      <!-- form section -->
+      <div class="col my-col">
+        <div class="form-wrapper">
+          <form [formGroup]="registerForm" (ngSubmit)="registerUser()">
+            <div class="header">
+              <p class="title">Register Here</p>
+              <p class="subtitle">
+                Please enter your details to create an account...
+              </p>
+            </div>
 
-      <mat-form-field appearance="outline">
-        <mat-label>Mobile</mat-label>
-        <input type="number" matInput formControlName="mobile" required />
-      </mat-form-field>
+            <div class="content">
+              <mat-form-field appearance="outline">
+                <mat-label>Name</mat-label>
+                <input type="text" matInput formControlName="name" required />
+                <mat-error
+                  *ngIf="registerForm.controls.name.hasError('required')"
+                >
+                  Name is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
 
-      <mat-form-field appearance="outline">
-        <mat-label>Gender</mat-label>
-        <mat-select formControlName="gender">
-          <mat-option>--</mat-option>
-          <mat-option
-            *ngFor="let gender of ['male', 'female', 'other']"
-            [value]="gender"
-          >
-            {{ gender | titlecase }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput formControlName="email" required />
+                <mat-error
+                  *ngIf="
+                    registerForm.controls.email.hasError('email') &&
+                    !registerForm.controls.email.hasError('required')
+                  "
+                >
+                  Please enter a valid email address
+                </mat-error>
+                <mat-error
+                  *ngIf="registerForm.controls.email.hasError('required')"
+                >
+                  Email is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
 
-      <mat-form-field appearance="outline">
-        <mat-label>Password</mat-label>
-        <input type="password" matInput formControlName="password" required />
-      </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Mobile</mat-label>
+                <input
+                  type="number"
+                  matInput
+                  formControlName="mobile"
+                  required
+                />
+                <mat-error
+                  *ngIf="registerForm.controls.mobile.hasError('required')"
+                >
+                  Mobile number is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
 
-      <button
-        type="button"
-        mat-raised-button
-        class="btn"
-        (click)="routeTo('login')"
-      >
-        Login
-      </button>
-      <button
-        type="button"
-        mat-raised-button
-        class="btn"
-        (click)="registerForm.reset()"
-      >
-        Reset
-      </button>
-      <button type="submit" mat-raised-button class="btn primary-btn">
-        Register
-      </button>
-    </form>
+              <mat-form-field appearance="outline">
+                <mat-label>Gender</mat-label>
+                <mat-select formControlName="gender">
+                  <mat-option>--</mat-option>
+                  <mat-option
+                    *ngFor="let gender of ['male', 'female', 'other']"
+                    [value]="gender"
+                  >
+                    {{ gender | titlecase }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input
+                  type="password"
+                  matInput
+                  formControlName="password"
+                  required
+                />
+                <mat-error
+                  *ngIf="
+                    registerForm.controls.password.hasError('minlength') &&
+                    !registerForm.controls.password.hasError('required')
+                  "
+                >
+                  Password's minimum length is <strong>8 characters!</strong>
+                </mat-error>
+                <mat-error
+                  *ngIf="registerForm.controls.password.hasError('required')"
+                >
+                  Password is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="footer">
+              <button
+                type="submit"
+                mat-raised-button
+                class="btn"
+                color="primary"
+                [disabled]="registerForm.invalid"
+              >
+                Register
+              </button>
+              <button
+                type="button"
+                mat-raised-button
+                class="btn"
+                color="accent"
+                (click)="registerForm.reset()"
+              >
+                Reset
+              </button>
+              <button
+                type="button"
+                mat-raised-button
+                class="btn"
+                (click)="routeTo('login')"
+              >
+                Login
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

@@ -1,0 +1,20 @@
+@import "../../../assets/ext_css/variables.scss";
+
+.sidenav-container {
+  .list-wrapper {
+    .nav-list {
+      .nav-list-item {
+        border-bottom: 1px solid $third-white;
+
+        .nav-link {
+          color: $white;
+          text-decoration: none;
+
+          &:hover {
+            color: $second-white;
+          }
+        }
+      }
+    }
+  }
+}
